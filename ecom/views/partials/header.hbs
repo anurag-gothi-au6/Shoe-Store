@@ -1,0 +1,24 @@
+<header style="background-color: grey;">
+    <div class="d-flex justify-content-between mx-5 pt-2" >
+        {{#if user}}
+        <form action="/logout?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-dark">Logout</button>
+        </form>
+        <a href="/cart">Cart - {{noOfCartItems}} items</a>
+        {{else}}
+        <a href="/register">Sign in or Register</a>
+        {{/if}}
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between mx-5 pb-3">
+        <h4>Shopppieee</h4>
+        <ul>
+            <li><a href="/shoes/Women?page=1">Women</a></li>
+            <li><a href="/shoes/Men?page=1">Men</a></li>
+            <li><a href="/shoes/Kids?page=1">Kids</a></li>
+        </ul>
+        <div>
+            <input type="text" placeholder="Search..." class="form-control"/>
+        </div>
+    </div>
+</header>

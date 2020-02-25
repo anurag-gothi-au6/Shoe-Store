@@ -1,0 +1,35 @@
+{{>header}}
+<div class="container">
+    <div class="font-bold my-2">Cart total : <span class="price">₹{{cartTotal}}</span></div>
+    <table class="table">
+  <tbody>
+    {{#each products}}
+    <tr>
+    <td><img src={{this.image}} alt={{this.name}} height="60px" style="border-radius: 50%;"/></td>
+    <td>{{name}}</td>
+    <td class="d-flex">
+        <form action="/quantityIncrement/{{id}}" method="POST">
+            <button type="submit" class="btn btn-dark">+</button>
+        </form>
+        <span class="px-2 font-bold">{{quantity}}</span>
+        <form action="/quantityDecrement/{{id}}" method="POST">
+            {{#ifMinQuantity quantity}}
+            <button type="submit" class="btn btn-dark" disabled>-</button>
+            {{else}}
+            <button type="submit" class="btn btn-dark">-</button>
+            {{/ifMinQuantity}}
+            
+        </form>
+    </td>
+    <td>₹{{price}}</td>
+    <td>₹{{totalPrice}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<form action="/checkout" method="POST" class="float-right">
+    {{#if noOfCartItems}}
+    <button type="submit" class="btn btn-dark">Finish payment</button>
+    {{/if}}
+</form>
+</div>

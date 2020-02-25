@@ -1,0 +1,25 @@
+.price {
+    color: green;font-weight: 500;
+}
+
+.font-small{
+    font-size: small;
+}
+
+.font-bold {
+    font-weight: 500;
+}
+
+.product-name {
+    color: grey;font-weight: 500;
+}
+
+.explore-link {
+    font-size: large;
+    font-weight: 500;
+}
+
+.explore-link:hover {
+    text-decoration: none;
+    color: grey;
+}

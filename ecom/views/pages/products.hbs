@@ -1,0 +1,28 @@
+{{>header}}
+<section class="container">
+    <div class="d-flex justify-content-center my-2">
+        <form action="/shoes/{{category}}?_method=GET&page={{prevPage}}" method="POST">
+            <button type="submit" class="btn btn-dark" style="border-radius: 50%;" {{prevDis}}><</button>
+        </form>
+        <div class="d-flex">
+            {{#for totalPages page category}}
+            <button type="submit" class="btn btn-dark" style="border-radius: 50%;" {{isDisable}}>{{pageNo}}</button>
+            {{/for}}
+        </div>
+        <form action="/shoes/{{category}}?_method=GET&page={{nextPage}}" method="POST">
+            <button type="submit" class="btn btn-dark" style="border-radius: 50%;" {{nextDis}}>></button>
+        </form>
+    </div>
+    <div class="row mt-3">
+        {{#each products}}
+        <div class="col-3">
+            <img src={{this.image}} alt={{this.name}} height="100px" />
+            <ul class="list-unstyled mt-1">
+                <li class="price">₹{{this.price}}</li>
+                <li><a href="/shoes/{{this.category}}/{{this._id}}">{{this.name}}</a></li>
+                <li class="font-small"><span class="font-bold">Category: </span>{{this.category}}</li>
+            </ul>
+        </div>
+        {{/each}}
+    </div>
+</section>

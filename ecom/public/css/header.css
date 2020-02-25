@@ -1,0 +1,18 @@
+header a,header div {
+    color: white;
+    font-weight: 500;
+}
+
+header a:hover {
+    color: lightgrey;
+    text-decoration: none;
+}
+
+header ul {
+    list-style: none;
+}
+
+header li {
+    display: inline-block;
+    margin: 0 20px 0 20px;
+}

@@ -1,0 +1,62 @@
+{{>header}}
+<div class="container" style="height: 70vh;">
+    <div class="d-flex mt-5 h-100">
+        <div class="d-flex flex-column border-right w-75">
+            <div class="d-flex justify-content-around">
+                <div>
+                    <img src={{product.image}} alt={{product.name}} height="220px"/>
+                </div>
+                <div class="d-flex flex-column justify-content-around">
+                    <ul class="list-unstyled">
+                        <li class="product-name">{{product.name}}</li>
+                        <li class="price">₹{{product.price}}</li>
+                    </ul>
+                    <div class="d-flex">
+                        <form action="/addToCart/{{product._id}}?category={{product.category}}&from=buyNow" method="POST">
+                            <button type="submit" class="btn btn-dark mr-2">Buy now</button>
+                        </form>
+                        <form action="/addToCart/{{product._id}}?category={{product.category}}" method="POST">
+                            <button type="submit" class="btn btn-dark mx-2">Add to cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100 border mt-4"></div>
+            <span class="font-bold font-small mt-1 mb-3 ml-3">Recommended products</span>
+            <div class="d-flex justify-content-around">
+                {{#each recommended}}
+                <div>
+                    <img src={{this.image}} alt={{this.name}} height="120px"/>
+                    <ul class="list-unstyled">
+                        <li><a href="/shoes/{{this.category}}/{{this._id}}">{{this.name}}</a></li>
+                        <li class="price">₹{{price}}</li>  
+                    </ul>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="d-flex flex-column justify-content-between ml-3 w-25" >
+            <span class="font-bold font-small">Reviews :</span>
+            <div style="height: 60%;overflow: auto;">
+                {{#each product.reviews}}
+                <div>
+                    <ul class="list-unstyled">
+                        <li class="font-bold">{{this.name}}</li>
+                        <li>{{this.review}}</li>
+                    </ul>
+                </div>
+                {{/each}}
+            </div>
+            <div>
+                <span class="font-bold font-small">Add review</span>
+                <form action="/addReview/{{product._id}}?category={{product.category}}" method="POST">
+                    <input type="text" placeholder="Name" class="form-control" name="name" value="{{userName}}"/>
+                    <input type="text" placeholder="Review"  class="form-control" name="review"/>
+                    <button type="submit" class="btn btn-dark mt-1 float-right">Submit</button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
